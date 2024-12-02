@@ -10,7 +10,7 @@ public class Code {
 				  {"-", "-", "-"},
 				  {"-", "-", "-"}};
 		
-		System.out.println("|---Vienvenido al 3 en ralla!!!---|");
+		System.out.println("|---Bienvenido al 3 en ralla!!!---|");
 		System.out.println("Las normas son simples, se van a mostrar a continuación");
 		System.out.println("Se lanzará una \"moneda\" (se escoge aleatoriamente) para elegir quien empezara primero, el jugador 1 o el jugador 2.");
 		System.out.println("Los dos jugadores irán poniendo las fichas hasta que: ");
