@@ -9,6 +9,7 @@ public class Code {
 		String[][] Tablero = {{"-", "-", "-"},
 				  {"-", "-", "-"},
 				  {"-", "-", "-"}};
+		int posicTablero = 9;
 		
 		System.out.println("|---Bienvenido al 3 en ralla!!!---|");
 		System.out.println("Las normas son simples, se van a mostrar a continuación");
@@ -33,7 +34,13 @@ public class Code {
 			}
 			System.out.println();
 		}
-	
+		
+		//sistema de rondas
+		for (int i = 0; i < posicTablero; i++) {
+			int rondas = i + 1;
+			System.out.println("Ronda " + rondas);
+			
+		}
 		
 	}
 
