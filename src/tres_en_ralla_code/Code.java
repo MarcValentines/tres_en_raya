@@ -96,7 +96,24 @@ public class Code {
 					columna = entradaTec.nextInt();
 				}
 				
-				
+				//sección para comprobar que la posición no se encuentre ocupada
+				if (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+					System.out.println("Esta posición se encuentra ocupada :( ");
+					
+					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
+					fila = entradaTec.nextInt();
+					while (fila > 2 | fila < 0) {
+						System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
+						fila = entradaTec.nextInt();
+					}
+					System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
+					columna = entradaTec.nextInt();
+					while (columna > 2 | columna < 0) {
+						System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
+						columna = entradaTec.nextInt();
+					}
+					
+				}
 				
 			} else if (rondTip == 1) {
 				
