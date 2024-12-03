@@ -11,9 +11,12 @@ public class Code {
 		String[][] Tablero = {{"-", "-", "-"},
 				  {"-", "-", "-"},
 				  {"-", "-", "-"}};
+		
+		//las rondas disponibles
 		int posicTablero = 9;
-		int numRondJ1 = 0;
-		int numRondJ2 = 0;
+		//sistema de rondas
+		int rondTip = 0;
+		//recuento filas y columnas para las rondas
 		int contFil = 0;
 		int contColumn = 0;
 		
@@ -42,25 +45,46 @@ public class Code {
 		
 		if (moneda == 1) {
 			System.out.println("Ha salido cara!!");
-			numRondJ1++;
+			rondTip = 0;
 		}else if (moneda == 2) {
 			System.out.println("Ha salido cruz!!");
-			numRondJ2++;
+			rondTip = 1;
 		}
 		
 		//mostrar el tablero inicialmente
+		int contFilas = 0;
+		int contColumnas = 0;
+		
 		for (int i = 0; i < Tablero.length; i++) {
 			for (int j = 0; j < Tablero[i].length; j++) {
-				System.out.print(Tablero[i][j] + " ");
+				if (contColumnas == 0) {
+					System.out.print("Fila = " + contFilas + "| " + contColumnas + Tablero[i][j] + " ");
+					contColumnas++;
+				}else {
+					System.out.print(contColumnas + Tablero[i][j] + " ");
+					contColumnas++;
+				}
 			}
+			contColumnas = 0;
+			contFilas++;
 			System.out.println();
 		}
+		contColumnas = 0;
+		contFilas = 0;
 		
 		//sistema de rondas
 		for (int i = 0; i < posicTablero; i++) {
 			int rondas = i + 1;
 			System.out.println("Ronda " + rondas);
 			
+			//sistema para quien empieza, se determina para cada ronda quien va a jugar
+			if (rondTip == 0) {
+				
+			} else if (rondTip == 1) {
+				
+			}
+			
+			//revalorizar rondTip
 			
 		}
 		
