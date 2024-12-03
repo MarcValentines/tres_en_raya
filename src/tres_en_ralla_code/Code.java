@@ -16,8 +16,6 @@ public class Code {
 		
 		//las rondas disponibles
 		int posicTablero = 9;
-		//sistema de rondas
-		int rondTip = 0;
 		//recuento filas y columnas para las rondas
 		int contFil = 0;
 		int contColumn = 0;
@@ -45,14 +43,12 @@ public class Code {
 		System.out.println("Se va a lanzar una moneda, si sale cara empieza " + jugador1);
 		System.out.println("Si sale cruz empieza " + jugador2);
 		
-		int moneda = random.nextInt(2) + 1;
+		int rondTip = random.nextInt(2) + 1;
 		
-		if (moneda == 1) {
+		if (rondTip == 1) {
 			System.out.println("Ha salido cara!!");
-			rondTip = 0;
-		}else if (moneda == 2) {
+		}else if (rondTip == 2) {
 			System.out.println("Ha salido cruz!!");
-			rondTip = 1;
 		}
 		
 		//mostrar el tablero inicialmente
@@ -85,7 +81,7 @@ public class Code {
 			int fila = 0;
 			
 			//sistema para quien empieza, se determina para cada ronda quien va a jugar
-			if (rondTip == 0) {
+			if (rondTip == 1) {
 				
 				//mostrar a quien le toca
 				System.out.println("Turno del jugador " + jugador1);
@@ -146,7 +142,7 @@ public class Code {
 				
 			
 			//en el turno del jugador 2	
-			} else if (rondTip == 1) {
+			} else if (rondTip == 2) {
 				
 				//mostrar a quien le toca
 				System.out.println("Turno del jugador " + jugador2);
@@ -209,37 +205,75 @@ public class Code {
 			
 			//Comprobar si hay ganador
 			//de forma vertical
+//			if(Tablero[0][0].equals("x") && Tablero[1][0].equals("x") && Tablero[2][0].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}else if (Tablero[0][0].equals("o") && Tablero[1][0].equals("o") && Tablero[2][0].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//				finPorVictoria = true;
+//			}else if (Tablero[0][1].equals("x") && Tablero[1][1].equals("x") && Tablero[2][1].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}else if (Tablero[0][1].equals("o") && Tablero[1][1].equals("o") && Tablero[2][1].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//				finPorVictoria = true;
+//			}else if (Tablero[0][2].equals("o") && Tablero[1][2].equals("o") && Tablero[2][2].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//			}else if (Tablero[0][2].equals("x") && Tablero[1][2].equals("x") && Tablero[2][2].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}
 			
-			if(Tablero[0][0].equals("x") && Tablero[1][0].equals("x") && Tablero[2][0].equals("x")) {
-				System.out.println("Gana el jugador " + jugador1);
-				finPorVictoria = true;
-			}else if (Tablero[0][0].equals("o") && Tablero[1][0].equals("o") && Tablero[2][0].equals("o")) {
-				System.out.println("Gana el jugador " + jugador2);
-				finPorVictoria = true;
-			}else if (Tablero[0][1].equals("x") && Tablero[1][1].equals("x") && Tablero[2][1].equals("x")) {
-				System.out.println("Gana el jugador " + jugador1);
-				finPorVictoria = true;
-			}else if (Tablero[0][1].equals("o") && Tablero[1][1].equals("o") && Tablero[2][1].equals("o")) {
-				System.out.println("Gana el jugador " + jugador2);
-				finPorVictoria = true;
-			}else if (Tablero[0][2].equals("o") && Tablero[1][2].equals("o") && Tablero[2][2].equals("o")) {
-				System.out.println("Gana el jugador " + jugador2);
-			}else if (Tablero[0][2].equals("x") && Tablero[1][2].equals("x") && Tablero[2][2].equals("x")) {
-				System.out.println("Gana el jugador " + jugador1);
-				finPorVictoria = true;
-			}
+			//en horizontal
+//			if(Tablero[0][0].equals("x") && Tablero[0][1].equals("x") && Tablero[0][2].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}else if (Tablero[0][0].equals("o") && Tablero[0][1].equals("o") && Tablero[0][2].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//				finPorVictoria = true;
+//			}else if (Tablero[1][0].equals("x") && Tablero[1][1].equals("x") && Tablero[1][2].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}else if (Tablero[1][0].equals("o") && Tablero[1][1].equals("o") && Tablero[1][2].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//				finPorVictoria = true;
+//			}else if (Tablero[2][0].equals("o") && Tablero[2][1].equals("o") && Tablero[2][2].equals("o")) {
+//				System.out.println("Gana el jugador " + jugador2);
+//			}else if (Tablero[2][0].equals("x") && Tablero[2][1].equals("x") && Tablero[2][2].equals("x")) {
+//				System.out.println("Gana el jugador " + jugador1);
+//				finPorVictoria = true;
+//			}
+			
+			//en diagonal
 			
 			
 			if(finPorVictoria) {
 				System.out.println("Fin de la partida!!");
-				break; //cambiar esto por duplicar el número de rondas y poner el tablero entero con "-" en caso de seleccionar si.
+				entradaTec.nextLine();
+				System.out.println("Quieres una revancha (si - no) ?");
+				String revancha = entradaTec.nextLine().toLowerCase();
+				if (revancha.equals("si")) {
+					finPorVictoria = false;
+					i = 0 -1; // se vuelve a empezar el bucle for para una nueva partida
+					System.out.println("Se vuelve a lanzar una moneda !!");
+					rondTip = random.nextInt(2) +1;
+					if(rondTip == 1) {
+						System.out.println("empieza el jugador " + jugador1);
+					}else if (rondTip == 2) {
+						System.out.println("Empieza el jugador " + jugador2);
+					}
+				}else {
+					System.out.println("Has seleccionado salir");
+					System.out.println("|| ... Exiting ... ||");
+					break;
+				}
 			}
 			
 			//revalorizar rondTip
-			if (rondTip == 0) {
+			if (rondTip == 1) {
 				rondTip++;
-			} else if (rondTip == 1) {
-				rondTip = 0;
+			} else if (rondTip == 2) {
+				rondTip--;
 			}
 			
 		}
