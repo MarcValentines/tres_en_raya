@@ -9,10 +9,15 @@ public class Code {
 		Scanner entradaTec = new Scanner(System.in);
 		Random random = new Random();
 		
+		//matriz que se va a mostrar a los jugadores
 		String[][] Tablero = {{"-", "-", "-"},
 				  			{"-", "-", "-"},
 				  			{"-", "-", "-"}};
 		
+		//matriz para comprobar si hay ganador
+		int[][] zumoDeMandarina = {{0, 0, 0},
+	  							{0, 0, 0},
+	  							{0, 0, 0}};
 		
 		//las rondas disponibles
 		int posicTablero = 9;
@@ -21,6 +26,9 @@ public class Code {
 		int contColumn = 0;
 		//encontrar unn ganador
 		boolean finPorVictoria = false;
+		//Contar victórias de los jugadores
+		int VictJ1 = 0;
+		int VictJ2 = 0;
 		
 		System.out.println("|---Bienvenido al 3 en ralla!!!---|");
 		System.out.println("Las normas son simples, se van a mostrar a continuación");
@@ -120,6 +128,7 @@ public class Code {
 				
 				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "x"; //modificar el interior del array
+					zumoDeMandarina[fila][columna] = 1; //para la suma de la matriz (para saber el ganador)
 					
 					//mostrar el contenido del tablero
 					for (int x = 0; x < Tablero.length; x++) {
@@ -205,50 +214,35 @@ public class Code {
 			
 			//Comprobar si hay ganador
 			//de forma vertical
-//			if(Tablero[0][0].equals("x") && Tablero[1][0].equals("x") && Tablero[2][0].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}else if (Tablero[0][0].equals("o") && Tablero[1][0].equals("o") && Tablero[2][0].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//				finPorVictoria = true;
-//			}else if (Tablero[0][1].equals("x") && Tablero[1][1].equals("x") && Tablero[2][1].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}else if (Tablero[0][1].equals("o") && Tablero[1][1].equals("o") && Tablero[2][1].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//				finPorVictoria = true;
-//			}else if (Tablero[0][2].equals("o") && Tablero[1][2].equals("o") && Tablero[2][2].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//			}else if (Tablero[0][2].equals("x") && Tablero[1][2].equals("x") && Tablero[2][2].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}
+			
+			
 			
 			//en horizontal
-//			if(Tablero[0][0].equals("x") && Tablero[0][1].equals("x") && Tablero[0][2].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}else if (Tablero[0][0].equals("o") && Tablero[0][1].equals("o") && Tablero[0][2].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//				finPorVictoria = true;
-//			}else if (Tablero[1][0].equals("x") && Tablero[1][1].equals("x") && Tablero[1][2].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}else if (Tablero[1][0].equals("o") && Tablero[1][1].equals("o") && Tablero[1][2].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//				finPorVictoria = true;
-//			}else if (Tablero[2][0].equals("o") && Tablero[2][1].equals("o") && Tablero[2][2].equals("o")) {
-//				System.out.println("Gana el jugador " + jugador2);
-//			}else if (Tablero[2][0].equals("x") && Tablero[2][1].equals("x") && Tablero[2][2].equals("x")) {
-//				System.out.println("Gana el jugador " + jugador1);
-//				finPorVictoria = true;
-//			}
+			
+			for (int x = 0; x < zumoDeMandarina.length; x++) {
+				int sumFil = 0;
+				for (int j = 0; j < zumoDeMandarina[x].length; j++) {
+					sumFil += zumoDeMandarina[x][j];
+				}
+				if (sumFil == 3) {
+					finPorVictoria = true;
+					VictJ1++;
+					break;
+				}else if (sumFil == 6) {
+					finPorVictoria = true;
+					VictJ2++;
+					break;
+				}
+			}
 			
 			//en diagonal
 			
 			
+			
 			if(finPorVictoria) {
 				System.out.println("Fin de la partida!!");
+				System.out.println("El Jugador " + jugador1 + " tiene " + VictJ1 + " victorias!!");
+				System.out.println("El Jugador " + jugador2 + " tiene " + VictJ2 + " victorias!!");
 				entradaTec.nextLine();
 				System.out.println("Quieres una revancha (si - no) ?");
 				String revancha = entradaTec.nextLine().toLowerCase();
