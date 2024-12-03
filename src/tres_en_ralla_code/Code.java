@@ -20,6 +20,8 @@ public class Code {
 		//recuento filas y columnas para las rondas
 		int contFil = 0;
 		int contColumn = 0;
+		//encontrar unn ganador
+		boolean finPorVictoria = false;
 		
 		System.out.println("|---Bienvenido al 3 en ralla!!!---|");
 		System.out.println("Las normas son simples, se van a mostrar a continuación");
@@ -83,6 +85,10 @@ public class Code {
 			
 			//sistema para quien empieza, se determina para cada ronda quien va a jugar
 			if (rondTip == 0) {
+				
+				//mostrar a quien le toca
+				System.out.println("Turno del jugador " + jugador1);
+				
 				System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
 				fila = entradaTec.nextInt();
 				while (fila > 2 | fila < 0) {
@@ -137,6 +143,68 @@ public class Code {
 				
 			} else if (rondTip == 1) {
 				
+				//mostrar a quien le toca
+				System.out.println("Turno del jugador " + jugador2);
+				
+				System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
+				fila = entradaTec.nextInt();
+				while (fila > 2 | fila < 0) {
+					System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
+					fila = entradaTec.nextInt();
+				}
+				System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
+				columna = entradaTec.nextInt();
+				while (columna > 2 | columna < 0) {
+					System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
+					columna = entradaTec.nextInt();
+				}
+				
+				//sección para comprobar que la posición no se encuentre ocupada
+				if (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+					System.out.println("Esta posición se encuentra ocupada :( ");
+					
+					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
+					fila = entradaTec.nextInt();
+					while (fila > 2 | fila < 0) {
+						System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
+						fila = entradaTec.nextInt();
+					}
+					System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
+					columna = entradaTec.nextInt();
+					while (columna > 2 | columna < 0) {
+						System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
+						columna = entradaTec.nextInt();
+					}
+					
+				}else if (Tablero[fila][columna].equals("-")) {
+					Tablero[fila][columna] = "o"; //modificar el interior del array
+					
+					//mostrar el contenido del tablero
+					for (int x = 0; x < Tablero.length; x++) {
+						for (int j = 0; j < Tablero[x].length; j++) {
+							if (contColumnas == 0) {
+								System.out.print("Fila = " + contFilas + "| " + contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}else {
+								System.out.print(contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}
+						}
+						contColumnas = 0;
+						contFilas++;
+						System.out.println();
+					}
+					contColumnas = 0;
+					contFilas = 0;
+				}
+				
+			}
+			
+			//Comprobar si hay ganador
+			
+			if(finPorVictoria) {
+				System.out.println("Fin de la partida!!");
+				break;
 			}
 			
 			//revalorizar rondTip
