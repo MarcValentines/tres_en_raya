@@ -103,7 +103,7 @@ public class Code {
 				}
 				
 				//sección para comprobar que la posición no se encuentre ocupada
-				if (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+				while (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
 					System.out.println("Esta posición se encuentra ocupada :( ");
 					
 					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
@@ -119,7 +119,9 @@ public class Code {
 						columna = entradaTec.nextInt();
 					}
 					
-				}else if (Tablero[fila][columna].equals("-")) {
+				} 
+				
+				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "x"; //modificar el interior del array
 					
 					//mostrar el contenido del tablero
@@ -160,7 +162,7 @@ public class Code {
 				}
 				
 				//sección para comprobar que la posición no se encuentre ocupada
-				if (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+				while (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
 					System.out.println("Esta posición se encuentra ocupada :( ");
 					
 					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
@@ -176,7 +178,9 @@ public class Code {
 						columna = entradaTec.nextInt();
 					}
 					
-				}else if (Tablero[fila][columna].equals("-")) {
+				}
+				
+				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "o"; //modificar el interior del array
 					
 					//mostrar el contenido del tablero
