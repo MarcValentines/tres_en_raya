@@ -10,8 +10,9 @@ public class Code {
 		Random random = new Random();
 		
 		String[][] Tablero = {{"-", "-", "-"},
-				  {"-", "-", "-"},
-				  {"-", "-", "-"}};
+				  			{"-", "-", "-"},
+				  			{"-", "-", "-"}};
+		
 		
 		//las rondas disponibles
 		int posicTablero = 9;
@@ -143,6 +144,8 @@ public class Code {
 					contFilas = 0;
 				}
 				
+			
+			//en el turno del jugador 2	
 			} else if (rondTip == 1) {
 				
 				//mostrar a quien le toca
@@ -205,10 +208,31 @@ public class Code {
 			}
 			
 			//Comprobar si hay ganador
+			//de forma vertical
+			
+			if(Tablero[0][0].equals("x") && Tablero[1][0].equals("x") && Tablero[2][0].equals("x")) {
+				System.out.println("Gana el jugador " + jugador1);
+				finPorVictoria = true;
+			}else if (Tablero[0][0].equals("o") && Tablero[1][0].equals("o") && Tablero[2][0].equals("o")) {
+				System.out.println("Gana el jugador " + jugador2);
+				finPorVictoria = true;
+			}else if (Tablero[0][1].equals("x") && Tablero[1][1].equals("x") && Tablero[2][1].equals("x")) {
+				System.out.println("Gana el jugador " + jugador1);
+				finPorVictoria = true;
+			}else if (Tablero[0][1].equals("o") && Tablero[1][1].equals("o") && Tablero[2][1].equals("o")) {
+				System.out.println("Gana el jugador " + jugador2);
+				finPorVictoria = true;
+			}else if (Tablero[0][2].equals("o") && Tablero[1][2].equals("o") && Tablero[2][2].equals("o")) {
+				System.out.println("Gana el jugador " + jugador2);
+			}else if (Tablero[0][2].equals("x") && Tablero[1][2].equals("x") && Tablero[2][2].equals("x")) {
+				System.out.println("Gana el jugador " + jugador1);
+				finPorVictoria = true;
+			}
+			
 			
 			if(finPorVictoria) {
 				System.out.println("Fin de la partida!!");
-				break;
+				break; //cambiar esto por duplicar el número de rondas y poner el tablero entero con "-" en caso de seleccionar si.
 			}
 			
 			//revalorizar rondTip
@@ -217,6 +241,7 @@ public class Code {
 			} else if (rondTip == 1) {
 				rondTip = 0;
 			}
+			
 		}
 		
 	}
