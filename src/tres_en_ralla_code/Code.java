@@ -1,5 +1,6 @@
 package tres_en_ralla_code;
 import java.util.Scanner;
+import java.util.Arrays; //este es una librería para poder interactuar con los arrays de forma más simple
 import java.util.Random;
 public class Code {
 
@@ -77,15 +78,36 @@ public class Code {
 			int rondas = i + 1;
 			System.out.println("Ronda " + rondas);
 			
+			int columna = 0;
+			int fila = 0;
+			
 			//sistema para quien empieza, se determina para cada ronda quien va a jugar
 			if (rondTip == 0) {
+				System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
+				fila = entradaTec.nextInt();
+				while (fila > 2 | fila < 0) {
+					System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
+					fila = entradaTec.nextInt();
+				}
+				System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
+				columna = entradaTec.nextInt();
+				while (columna > 2 | columna < 0) {
+					System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
+					columna = entradaTec.nextInt();
+				}
+				
+				
 				
 			} else if (rondTip == 1) {
 				
 			}
 			
 			//revalorizar rondTip
-			
+			if (rondTip == 0) {
+				rondTip++;
+			} else if (rondTip == 1) {
+				rondTip = 0;
+			}
 		}
 		
 	}
