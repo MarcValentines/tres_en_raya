@@ -113,6 +113,26 @@ public class Code {
 						columna = entradaTec.nextInt();
 					}
 					
+				}else if (Tablero[fila][columna].equals("-")) {
+					Tablero[fila][columna] = "x"; //modificar el interior del array
+					
+					//mostrar el contenido del tablero
+					for (int x = 0; x < Tablero.length; x++) {
+						for (int j = 0; j < Tablero[x].length; j++) {
+							if (contColumnas == 0) {
+								System.out.print("Fila = " + contFilas + "| " + contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}else {
+								System.out.print(contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}
+						}
+						contColumnas = 0;
+						contFilas++;
+						System.out.println();
+					}
+					contColumnas = 0;
+					contFilas = 0;
 				}
 				
 			} else if (rondTip == 1) {
