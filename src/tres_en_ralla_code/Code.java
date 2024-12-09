@@ -15,7 +15,7 @@ public class Code {
 				  			{"-", "-", "-"}};
 		
 		//matriz para comprobar si hay ganador
-		int[][] zumoDeMandarina = {{0, 0, 0},
+		int[][] calcVictoria = {{0, 0, 0},
 	  							{0, 0, 0},
 	  							{0, 0, 0}};
 		
@@ -51,11 +51,11 @@ public class Code {
 		System.out.println("Se va a lanzar una moneda, si sale cara empieza " + jugador1);
 		System.out.println("Si sale cruz empieza " + jugador2);
 		
-		int rondTip = random.nextInt(2) + 1;
+		int moneda = random.nextInt(2) + 1;
 		
-		if (rondTip == 1) {
+		if (moneda == 1) {
 			System.out.println("Ha salido cara!!");
-		}else if (rondTip == 2) {
+		}else if (moneda == 2) {
 			System.out.println("Ha salido cruz!!");
 		}
 		
@@ -89,7 +89,7 @@ public class Code {
 			int fila = 0;
 			
 			//sistema para quien empieza, se determina para cada ronda quien va a jugar
-			if (rondTip == 1) {
+			if (moneda == 1) {
 				
 				//mostrar a quien le toca
 				System.out.println("Turno del jugador " + jugador1);
@@ -128,7 +128,7 @@ public class Code {
 				
 				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "x"; //modificar el interior del array
-					zumoDeMandarina[fila][columna] = 1; //para la suma de la matriz (para saber el ganador)
+					calcVictoria[fila][columna] = 1; //para la suma de la matriz (para saber el ganador)
 					
 					//mostrar el contenido del tablero
 					for (int x = 0; x < Tablero.length; x++) {
@@ -151,7 +151,7 @@ public class Code {
 				
 			
 			//en el turno del jugador 2	
-			} else if (rondTip == 2) {
+			} else if (moneda == 2) {
 				
 				//mostrar a quien le toca
 				System.out.println("Turno del jugador " + jugador2);
@@ -190,6 +190,7 @@ public class Code {
 				
 				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "o"; //modificar el interior del array
+					calcVictoria[fila][columna] = 2; //para la suma de la matriz (para saber el ganador)
 					
 					//mostrar el contenido del tablero
 					for (int x = 0; x < Tablero.length; x++) {
@@ -215,14 +216,31 @@ public class Code {
 			//Comprobar si hay ganador
 			//de forma vertical
 			
-			
+			int sumCol = 0;
+			for (int x = 0; x < calcVictoria.length; x++) {
+				
+				for (int j = 0; j < calcVictoria[x].length; j++) {
+					 sumCol = calcVictoria[j][x];
+				}
+				if (sumCol == 3) {
+					finPorVictoria = true;
+					VictJ1++;
+					break;
+				}else if (sumCol == 6) {
+					finPorVictoria = true;
+					VictJ2++;
+					break;
+				}
+				
+				sumCol = 0;
+			}
 			
 			//en horizontal
 			
-			for (int x = 0; x < zumoDeMandarina.length; x++) {
+			for (int x = 0; x < calcVictoria.length; x++) {
 				int sumFil = 0;
-				for (int j = 0; j < zumoDeMandarina[x].length; j++) {
-					sumFil += zumoDeMandarina[x][j];
+				for (int j = 0; j < calcVictoria[x].length; j++) {
+					sumFil += calcVictoria[x][j];
 				}
 				if (sumFil == 3) {
 					finPorVictoria = true;
@@ -244,16 +262,17 @@ public class Code {
 				System.out.println("El Jugador " + jugador1 + " tiene " + VictJ1 + " victorias!!");
 				System.out.println("El Jugador " + jugador2 + " tiene " + VictJ2 + " victorias!!");
 				entradaTec.nextLine();
-				System.out.println("Quieres una revancha (si - no) ?");
+				System.out.println("Quieres una revancha ?");
+				System.out.println("Escribe 'si' para realizarla");
 				String revancha = entradaTec.nextLine().toLowerCase();
 				if (revancha.equals("si")) {
 					finPorVictoria = false;
 					i = 0 -1; // se vuelve a empezar el bucle for para una nueva partida
 					System.out.println("Se vuelve a lanzar una moneda !!");
-					rondTip = random.nextInt(2) +1;
-					if(rondTip == 1) {
+					moneda = random.nextInt(2) +1;
+					if(moneda == 1) {
 						System.out.println("empieza el jugador " + jugador1);
-					}else if (rondTip == 2) {
+					}else if (moneda == 2) {
 						System.out.println("Empieza el jugador " + jugador2);
 					}
 				}else {
@@ -264,10 +283,10 @@ public class Code {
 			}
 			
 			//revalorizar rondTip
-			if (rondTip == 1) {
-				rondTip++;
-			} else if (rondTip == 2) {
-				rondTip--;
+			if (moneda == 1) {
+				moneda++;
+			} else if (moneda == 2) {
+				moneda--;
 			}
 			
 		}
