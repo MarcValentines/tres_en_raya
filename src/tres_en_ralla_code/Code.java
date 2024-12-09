@@ -290,7 +290,7 @@ public class Code {
 	    	}
 	    	
 	    	//en caso de que terminen todas las rondas y no haya ningún ganador =
-	    	if (i == 9) {
+	    	if (i == 9 && !finPorVictoria) {
 				System.out.println("|| NO HAY GANADOR, HA SIDO EMPATE ||");
 				finPorVictoria = true;
 			}
