@@ -254,9 +254,25 @@ public class Code {
 			}
 			
 			//en diagonal
+			//de izquierda a derecha
+			int sumDiag1 = 0;
+		    for (int x = 0; x < 3; x++) { //3 es el numero de filas
+		        sumDiag1 += calcVictoria[x][x];  // Suma los elementos de la diagonal principal
+		    }
+		    if (sumDiag1 == 3) {
+		    	finPorVictoria = true;
+				VictJ1++;
+				break;
+			} else if (sumDiag1 == 6) {
+				finPorVictoria = true;
+				VictJ2++;
+				break;
+			}
+		    
+		    //de derecha a izquierda
+		    
 			
-			
-			
+			//En caso de que haya un final por victória
 			if(finPorVictoria) {
 				System.out.println("Fin de la partida!!");
 				System.out.println("El Jugador " + jugador1 + " tiene " + VictJ1 + " victorias!!");
