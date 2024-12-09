@@ -96,30 +96,30 @@ public class Code {
 				
 				System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
 				fila = entradaTec.nextInt();
-				while (fila > 2 | fila < 0) {
+				while (fila > 2 || fila < 0) {
 					System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
 					fila = entradaTec.nextInt();
 				}
 				System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
 				columna = entradaTec.nextInt();
-				while (columna > 2 | columna < 0) {
+				while (columna > 2 || columna < 0) {
 					System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
 					columna = entradaTec.nextInt();
 				}
 				
 				//sección para comprobar que la posición no se encuentre ocupada
-				while (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+				while (Tablero[fila][columna].equals("x") || Tablero[fila][columna].equals("o")) {
 					System.out.println("Esta posición se encuentra ocupada :( ");
 					
 					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
 					fila = entradaTec.nextInt();
-					while (fila > 2 | fila < 0) {
+					while (fila > 2 || fila < 0) {
 						System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
 						fila = entradaTec.nextInt();
 					}
 					System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
 					columna = entradaTec.nextInt();
-					while (columna > 2 | columna < 0) {
+					while (columna > 2 || columna < 0) {
 						System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
 						columna = entradaTec.nextInt();
 					}
@@ -158,30 +158,30 @@ public class Code {
 				
 				System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
 				fila = entradaTec.nextInt();
-				while (fila > 2 | fila < 0) {
+				while (fila > 2 || fila < 0) {
 					System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
 					fila = entradaTec.nextInt();
 				}
 				System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
 				columna = entradaTec.nextInt();
-				while (columna > 2 | columna < 0) {
+				while (columna > 2 || columna < 0) {
 					System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
 					columna = entradaTec.nextInt();
 				}
 				
 				//sección para comprobar que la posición no se encuentre ocupada
-				while (Tablero[fila][columna].equals("x") | Tablero[fila][columna].equals("o")) {
+				while (Tablero[fila][columna].equals("x") || Tablero[fila][columna].equals("o")) {
 					System.out.println("Esta posición se encuentra ocupada :( ");
 					
 					System.out.println("Selecciona la fila donde quieres colocar la ficha = ");
 					fila = entradaTec.nextInt();
-					while (fila > 2 | fila < 0) {
+					while (fila > 2 || fila < 0) {
 						System.out.println("No es un valor válido, vuelve a intentarlo (0 - 2) = ");
 						fila = entradaTec.nextInt();
 					}
 					System.out.println("Selecciona la columna en la que quieres poner la ficha = ");
 					columna = entradaTec.nextInt();
-					while (columna > 2 | columna < 0) {
+					while (columna > 2 || columna < 0) {
 						System.out.println("No es una columna válida, vuelve a intentarlo (0 - 2) = ");
 						columna = entradaTec.nextInt();
 					}
@@ -254,9 +254,10 @@ public class Code {
 			}
 			
 			//en diagonal
+			int filas = 3;
 			//de izquierda a derecha
 			int sumDiag1 = 0;
-		    for (int x = 0; x < 3; x++) { //3 es el numero de filas
+		    for (int x = 0; x < filas; x++) { 
 		        sumDiag1 += calcVictoria[x][x];  // Suma los elementos de la diagonal principal
 		    }
 		    if (sumDiag1 == 3) {
@@ -270,7 +271,19 @@ public class Code {
 			}
 		    
 		    //de derecha a izquierda
-		    
+		    int sumDiag2 = 0;
+		    for (int x = 0; x < filas; x++) {
+		        sumDiag2 += calcVictoria[x][filas - x - 1];  // Suma los elementos de la diagonal secundaria
+		    }
+	    	if (sumDiag2 == 3) {
+	    		finPorVictoria = true;
+	    		VictJ1++;
+	    		break;
+	    	} else if (sumDiag2 == 6) {
+	    		finPorVictoria = true;
+	    		VictJ2++;
+	    		break;
+	    	}
 			
 			//En caso de que haya un final por victória
 			if(finPorVictoria) {
