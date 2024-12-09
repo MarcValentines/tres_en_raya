@@ -190,7 +190,7 @@ public class Code {
 				
 				if (Tablero[fila][columna].equals("-")) {
 					Tablero[fila][columna] = "o"; //modificar el interior del array
-					calcVictoria[fila][columna] = 2; //para la suma de la matriz (para saber el ganador)
+					calcVictoria[fila][columna] = -1; //para la suma de la matriz (para saber el ganador)
 					
 					//mostrar el contenido del tablero
 					for (int x = 0; x < Tablero.length; x++) {
@@ -225,10 +225,12 @@ public class Code {
 				if (sumCol == 3) {
 					finPorVictoria = true;
 					VictJ1++;
+					System.out.println("|| El JUGADOR " + jugador1 + " gana!! ||");
 					break;
-				}else if (sumCol == 6) {
+				}else if (sumCol == -3) {
 					finPorVictoria = true;
 					VictJ2++;
+					System.out.println("|| El JUGADOR " + jugador2 + " gana!! ||");
 					break;
 				}
 				
@@ -245,16 +247,18 @@ public class Code {
 				if (sumFil == 3) {
 					finPorVictoria = true;
 					VictJ1++;
+					System.out.println("|| El personaje " + jugador1 + " gana!! ||");
 					break;
-				}else if (sumFil == 6) {
+				}else if (sumFil == -3) {
 					finPorVictoria = true;
 					VictJ2++;
+					System.out.println("|| El personaje " + jugador2 + " gana!! ||");
 					break;
 				}
 			}
 			
 			//en diagonal
-			int filas = 3;
+			int filas = calcVictoria.length;
 			//de izquierda a derecha
 			int sumDiag1 = 0;
 		    for (int x = 0; x < filas; x++) { 
@@ -263,11 +267,11 @@ public class Code {
 		    if (sumDiag1 == 3) {
 		    	finPorVictoria = true;
 				VictJ1++;
-				break;
-			} else if (sumDiag1 == 6) {
+				System.out.println("|| El chavo llamao " + jugador1 + " gana!! ||");
+			} else if (sumDiag1 == -3) {
 				finPorVictoria = true;
 				VictJ2++;
-				break;
+				System.out.println("|| El chavo llamao " + jugador2 + " gana!! ||");
 			}
 		    
 		    //de derecha a izquierda
@@ -278,11 +282,11 @@ public class Code {
 	    	if (sumDiag2 == 3) {
 	    		finPorVictoria = true;
 	    		VictJ1++;
-	    		break;
-	    	} else if (sumDiag2 == 6) {
+	    		System.out.println("|| El niño este -> " + jugador1 + " gana la partida :O ||");
+	    	} else if (sumDiag2 == -3) {
 	    		finPorVictoria = true;
 	    		VictJ2++;
-	    		break;
+	    		System.out.println("|| El niño este -> " + jugador2 + " gana la partida :O ||");
 	    	}
 			
 			//En caso de que haya un final por victória
