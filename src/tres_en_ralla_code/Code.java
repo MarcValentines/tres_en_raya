@@ -220,20 +220,20 @@ public class Code {
 			for (int x = 0; x < calcVictoria.length; x++) {
 				
 				for (int j = 0; j < calcVictoria[x].length; j++) {
-					 sumCol = calcVictoria[j][x];
-				}
-				if (sumCol == 3) {
-					finPorVictoria = true;
-					VictJ1++;
-					System.out.println("|| El JUGADOR " + jugador1 + " gana!! ||");
-					break;
-				}else if (sumCol == -3) {
-					finPorVictoria = true;
-					VictJ2++;
-					System.out.println("|| El JUGADOR " + jugador2 + " gana!! ||");
-					break;
-				}
+					 sumCol += calcVictoria[j][x];
 				
+					 if (sumCol == 3) {
+						 finPorVictoria = true;
+						 VictJ1++;
+						 System.out.println("|| El JUGADOR " + jugador1 + " gana!! ||");
+						 break;
+					 }else if (sumCol == -3) {
+						 finPorVictoria = true;
+						 VictJ2++;
+						 System.out.println("|| El JUGADOR " + jugador2 + " gana!! ||");
+						 break;
+					 }
+				}
 				sumCol = 0;
 			}
 			
@@ -288,6 +288,12 @@ public class Code {
 	    		VictJ2++;
 	    		System.out.println("|| El niño este -> " + jugador2 + " gana la partida :O ||");
 	    	}
+	    	
+	    	//en caso de que terminen todas las rondas y no haya ningún ganador =
+	    	if (i == 9) {
+				System.out.println("|| NO HAY GANADOR, HA SIDO EMPATE ||");
+				finPorVictoria = true;
+			}
 			
 			//En caso de que haya un final por victória
 			if(finPorVictoria) {
@@ -304,6 +310,7 @@ public class Code {
 					for (int x = 0; x < Tablero.length; x++) {
 						for (int j = 0; j < Tablero[x].length; j++) {
 							Tablero[x][j] = "-";
+							calcVictoria[x][j] = 0;
 						}
 					}
 					
