@@ -299,6 +299,9 @@ public class Code {
 				System.out.println("Escribe 'si' para realizarla");
 				String revancha = entradaTec.nextLine().toLowerCase();
 				if (revancha.equals("si")) {
+					//poner el tablero entero con "-" para poder jugar
+					
+					//cancelar el fin por victória y lanzar una moneda de nuevo
 					finPorVictoria = false;
 					i = 0 -1; // se vuelve a empezar el bucle for para una nueva partida
 					System.out.println("Se vuelve a lanzar una moneda !!");
@@ -308,6 +311,23 @@ public class Code {
 					}else if (moneda == 2) {
 						System.out.println("Empieza el jugador " + jugador2);
 					}
+					//mostrar por pantalla el tablero
+					for (int x = 0; x < Tablero.length; x++) {
+						for (int j = 0; j < Tablero[x].length; j++) {
+							if (contColumnas == 0) {
+								System.out.print("Fila = " + contFilas + "| " + contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}else {
+								System.out.print(contColumnas + Tablero[x][j] + " ");
+								contColumnas++;
+							}
+						}
+						contColumnas = 0;
+						contFilas++;
+						System.out.println();
+					}
+					contColumnas = 0;
+					contFilas = 0;
 				}else {
 					System.out.println("Has seleccionado salir");
 					System.out.println("|| ... Exiting ... ||");
