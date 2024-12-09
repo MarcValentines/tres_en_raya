@@ -301,6 +301,12 @@ public class Code {
 				if (revancha.equals("si")) {
 					//poner el tablero entero con "-" para poder jugar
 					
+					for (int x = 0; x < Tablero.length; x++) {
+						for (int j = 0; j < Tablero[x].length; j++) {
+							Tablero[x][j] = "-";
+						}
+					}
+					
 					//cancelar el fin por victória y lanzar una moneda de nuevo
 					finPorVictoria = false;
 					i = 0 -1; // se vuelve a empezar el bucle for para una nueva partida
