@@ -291,7 +291,7 @@ public class Code {
 	    	}
 	    	
 	    	//en caso de que terminen todas las rondas y no haya ningún ganador =
-	    	if (i == 9 && !finPorVictoria) {
+	    	if (i == 8 && !finPorVictoria) {
 				System.out.println("|| NO HAY GANADOR, HA SIDO EMPATE ||");
 				finPorVictoria = true;
 			}
@@ -302,6 +302,7 @@ public class Code {
 				System.out.println("El Jugador " + jugador1 + " tiene " + VictJ1 + " victorias!!");
 				System.out.println("El Jugador " + jugador2 + " tiene " + VictJ2 + " victorias!!");
 				entradaTec.nextLine();
+				System.out.println("______________________________________________________________");
 				System.out.println("Quieres una revancha ?");
 				System.out.println("Escribe 'si' para realizarla");
 				String revancha = entradaTec.nextLine().toLowerCase();
